@@ -1,6 +1,7 @@
 // In-memory storage for cooking sessions
 // Key: sessionId (IP or generated ID), Value: Session Object
-const sessions = {};
+// Key: sessionId (IP or generated ID), Value: Session Object
+const sessions = new Map();
 
 /**
  * Create or retrieve a session
@@ -8,15 +9,15 @@ const sessions = {};
  * @returns {object} session
  */
 const getSession = (id) => {
-    if (!sessions[id]) {
-        sessions[id] = {
+    if (!sessions.has(id)) {
+        sessions.set(id, {
             recipe: null,
             currentStepIndex: 0,
             history: [], // conversation history or action history
             isPaused: false
-        };
+        });
     }
-    return sessions[id];
+    return sessions.get(id);
 };
 
 module.exports = {
