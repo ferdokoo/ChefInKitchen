@@ -1,0 +1,42 @@
+{
+    "type": "webhook",
+    "name": "repeat_step",
+    "description": "Repeat the current cooking step",
+    "disable_interruptions": false,
+    "force_pre_tool_speech": "auto",
+    "assignments": [],
+    "tool_call_sound": null,
+    "tool_call_sound_behavior": "auto",
+    "execution_mode": "immediate",
+    "api_schema": {
+        "url": "https://YOUR_NGROK_URL.ngrok-free.app/step/repeat",
+        "method": "POST",
+        "path_params_schema": [],
+        "query_params_schema": [],
+        "request_body_schema": {
+            "id": "body",
+            "type": "object",
+            "description": "No parameters needed",
+            "properties": [
+			{
+				"id": "step",
+				"description": "repeat current step",
+				"dynamic_variable": "",
+				"constant_value": "",
+				"required": false,
+				"type": "string",
+				"value_type": "llm_prompt",
+				"enum": null
+			}
+			],
+            "required": false,
+            "value_type": "llm_prompt"
+        },
+        "request_headers": [],
+        "auth_connection": null
+    },
+    "response_timeout_secs": 20,
+    "dynamic_variables": {
+        "dynamic_variable_placeholders": {}
+    }
+}

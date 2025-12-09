@@ -1,0 +1,43 @@
+{
+    "type": "webhook",
+    "name": "suggest_substitution",
+    "description": "Suggest a substitute for a missing ingredient",
+    "disable_interruptions": false,
+    "force_pre_tool_speech": "auto",
+    "assignments": [],
+    "tool_call_sound": null,
+    "tool_call_sound_behavior": "auto",
+    "execution_mode": "immediate",
+    "api_schema": {
+        "url": "https://YOUR_NGROK_URL.ngrok-free.app/ingredient/substitute",
+        "method": "POST",
+        "path_params_schema": [],
+        "query_params_schema": [],
+        "request_body_schema": {
+            "id": "body",
+            "type": "object",
+            "description": "Ingredient substitution parameters",
+            "properties": [
+				{
+					"id": "ingredient",
+                    "type": "string",
+                    "value_type": "llm_prompt",
+                    "description": "The ingredient the user needs to substitute (e.g., 'garlic', 'butter', 'soy sauce')",
+                    "dynamic_variable": "",
+                    "constant_value": "",
+                    "enum": null,
+                    "is_system_provided": false,
+                    "required": true
+                }
+            ],
+            "required": false,
+            "value_type": "llm_prompt"
+        },
+        "request_headers": [],
+        "auth_connection": null
+    },
+    "response_timeout_secs": 20,
+    "dynamic_variables": {
+        "dynamic_variable_placeholders": {}
+    }
+}

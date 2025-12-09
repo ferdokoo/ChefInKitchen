@@ -1,0 +1,42 @@
+{
+    "type": "webhook",
+    "name": "adapt_step",
+    "description": "Adapt the current step when the user has a problem or constraint",
+    "disable_interruptions": false,
+    "force_pre_tool_speech": "auto",
+    "assignments": [],
+    "tool_call_sound": null,
+    "tool_call_sound_behavior": "auto",
+    "execution_mode": "immediate",
+    "api_schema": {
+        "url": "https://YOUR_NGROK_URL.ngrok-free.app/step/adapt",
+        "method": "POST",
+        "path_params_schema": [],
+        "query_params_schema": [],
+        "request_body_schema": {
+            "id": "body",
+            "type": "object",
+            "description": "Step adaptation parameters",
+            "properties": [
+			{
+                "id": "constraint",
+                "type": "string",
+                "value_type": "llm_prompt",
+                "description": "The specific issue or constraint the user is facing (e.g., 'I don't have a pan', 'It's burning', 'I need to go slower')",
+                "dynamic_variable": "",
+                "constant_value": "",
+                "enum": null,
+                "required": true
+            }
+            ],
+            "required": false,
+            "value_type": "llm_prompt"
+        },
+        "request_headers": [],
+        "auth_connection": null
+    },
+    "response_timeout_secs": 20,
+    "dynamic_variables": {
+        "dynamic_variable_placeholders": {}
+    }
+}
